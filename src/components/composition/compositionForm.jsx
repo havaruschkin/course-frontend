@@ -51,7 +51,10 @@ class CompositionForm extends Form {
     async initComposition() {
         try {
             const compositionId = this.props.match.params.id;
-            if (compositionId === "new") return;
+            if (compositionId === "new") {
+            this.setState({urlImage: null});
+                return
+            }
             const {data: composition} = await getComposition(compositionId);
             const chapters = composition.chapters;
             const tags = composition.tags;
