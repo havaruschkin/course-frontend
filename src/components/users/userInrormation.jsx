@@ -2,6 +2,7 @@ import React from "react";
 import InlineEdit from 'react-edit-inplace';
 
 const UserInformation = ({user, onInPlace}) => {
+    console.log(user)
     if (user.email === undefined) return null;
     return (
         <div>
@@ -22,7 +23,7 @@ const UserInformation = ({user, onInPlace}) => {
                     outline: 0,
                     border: 0
                 }}/><br/>
-            <span>Created: </span>{user.createdAt}<br/>
+            <span>Created: </span>{user.createdTs}<br/>
             <span>Status: </span>{user.status}<br/>
         </div>
     );
