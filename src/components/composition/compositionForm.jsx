@@ -164,7 +164,6 @@ class CompositionForm extends Form {
                     <div>
                         <h1 className="text-center" style={{marginBottom: "50px"}}>{titlePage}</h1>
                         <form onSubmit={this.handleSubmit}>
-
                             <Image
                                 urlImage={urlImage}
                                 altImage={altImage}

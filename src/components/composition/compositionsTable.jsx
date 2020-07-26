@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Table from "../common/table/table";
 import {Link} from "react-router-dom";
 import auth from "../../services/authService";
+import {NavLink} from "react-router-dom";
 
 class CompositionsTable extends Component {
     columns = [
@@ -22,10 +23,11 @@ class CompositionsTable extends Component {
         key: "buttons",
         content: composition => (
             <div>
-                <i className="fa fa-pencil-square-o m-2 clickable"
-                   onClick={() => this.props.onUpdate(composition)}
-                   aria-hidden="true"
-                   title="Update composition"/>
+                <NavLink to={`/compositions/${composition.id}`}>
+                    <i className="fa fa-pencil-square-o m-2 clickable"
+                       aria-hidden="true"
+                       title="Update composition"/>
+                </NavLink>
                 <i className="fa fa-trash m-2 clickable"
                    onClick={() => this.props.onDelete(composition)}
                    aria-hidden="true"

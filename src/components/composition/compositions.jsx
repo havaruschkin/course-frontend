@@ -45,10 +45,6 @@ class Compositions extends Component {
         this.setState({user: currentUser});
     }
 
-    handleUpdate = composition => {
-        window.location = `/compositions/${composition.id}`;
-    };
-
     handleDelete = async composition => {
         const originalComposition = this.state.compositions;
         const compositions = originalComposition.filter(c => c.id !== composition.id);
@@ -139,7 +135,6 @@ class Compositions extends Component {
                         compositions={compositions}
                         sortColumn={sortColumn}
                         onLike={this.handleLike}
-                        onUpdate={this.handleUpdate}
                         onDelete={this.handleDelete}
                         onSort={this.handleSort}/>
                     <Pagination

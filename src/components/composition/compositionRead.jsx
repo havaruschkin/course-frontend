@@ -36,11 +36,6 @@ class CompositionRead extends Component {
         this.setState({data: composition, ratingComposition});
     }
 
-    handleUpdate = chapterId => {
-        window.location = `/compositions/${this.props.match.params.id}
-        /chapters/${chapterId}?key=${this.props.match.params.id}`;
-    };
-
     handleDelete = async chapterId => {
         const compositionId = this.props.match.params.id;
         await deleteChapter(chapterId);
@@ -77,7 +72,7 @@ class CompositionRead extends Component {
                                 <ChapterRead chapters={data.chapters}
                                              currentUser={currentUser}
                                              compositionUser={data.user}
-                                             onUpdate={this.handleUpdate}
+                                             compositionId={this.props.match.params.id}
                                              onDelete={this.handleDelete}/>
                                 {currentUser && (
                                     <Rating compositionId={this.props.match.params.id}/>
