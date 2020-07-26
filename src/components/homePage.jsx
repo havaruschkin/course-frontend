@@ -17,8 +17,8 @@ class HomePage extends Component {
 
     async componentDidMount() {
         await this.initGenres();
-        await this.initCompositions();
         await this.initTags();
+        await this.initCompositions();
     }
 
     async initGenres() {
@@ -28,8 +28,8 @@ class HomePage extends Component {
     }
 
     async initCompositions() {
-        const {data: compositions} = await getCompositions();
-        this.setState({compositions});
+            const {data: compositions} = await getCompositions();
+            this.setState({compositions});
     }
 
     async initTags() {

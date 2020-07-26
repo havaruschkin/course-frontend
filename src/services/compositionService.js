@@ -15,6 +15,10 @@ export function getCompositionsUser() {
 return http.get(apiEndpoint + "/user")
 }
 
+export function getCompositionsSearch(search) {
+    return http.get(`${apiEndpoint}/search?search=${search}`)
+}
+
 export function getComposition(compositionId) {
     return http.get(compositionUrl(compositionId));
 }

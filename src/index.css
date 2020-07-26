@@ -8,16 +8,6 @@ body {
     font-size: 16px;
 }
 
-.table-user {
-    min-width: 100%;
-    border-spacing: 15px;
-    border-collapse: separate;
-}
-
-.nav-item {
-    margin-left: 10px;
-}
-
 .badge-secondary:hover {
     background: #61dafb;
 }

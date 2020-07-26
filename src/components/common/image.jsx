@@ -4,12 +4,11 @@ import LanguageContext from "../../context/languageContext";
 
 const Image = ({urlImage, altImage, onImageUpload, onDeleteImage, onImageDownload}) => {
     let {language} = useContext(LanguageContext);
-    const styles = {border: '1px solid black', width: 'auto', color: 'black', padding: 20};
 
     return (
         <div style={{marginBottom: "30px"}}>
             {urlImage === null && (
-                <div style={styles}>
+                <div className="drop">
                     <FileDrop
                         onDrop={(files, event) =>
                             onImageUpload(files)}>
