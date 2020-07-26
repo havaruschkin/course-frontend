@@ -24,6 +24,7 @@ class Chapters extends Component {
                 {languageContext => (
                     <div className="row">
                         <div className="col">
+                            <hr/>
                             <NavLink to={`/compositions/${this.props.compositionId}/chapters/new`}>
                                 <button className="btn btn-primary mb-3">
                                     {languageContext.language.addChapter}

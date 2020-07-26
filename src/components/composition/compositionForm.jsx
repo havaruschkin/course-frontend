@@ -164,6 +164,7 @@ class CompositionForm extends Form {
                     <div>
                         <h1 className="text-center" style={{marginBottom: "50px"}}>{titlePage}</h1>
                         <form onSubmit={this.handleSubmit}>
+
                             <Image
                                 urlImage={urlImage}
                                 altImage={altImage}
@@ -184,10 +185,12 @@ class CompositionForm extends Form {
                                 languageContext.language.compositionForm.genre,
                                 genres)}
                             {compositionId !== "new" && (
-                                <Chapters
-                                    chapters={chapters}
-                                    compositionId={compositionId}
-                                />
+                                <div className="mb-5">
+                                    <Chapters
+                                        chapters={chapters}
+                                        compositionId={compositionId}
+                                    />
+                                </div>
                             )}
                             <div>
                                 <label>{languageContext.language.compositionForm.tags}</label>

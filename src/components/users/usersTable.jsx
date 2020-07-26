@@ -8,7 +8,7 @@ const UsersTable = ({users, selectedFlagValue, onSelectAll, onSelect, onAdmin}) 
 
     return (
         <React.Fragment>
-            <table style={{minWidth: "1000px"}}>
+            <table className="table-user">
                 <thead>
                 <tr>
                     <th>

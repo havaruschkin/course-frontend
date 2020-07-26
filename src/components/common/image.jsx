@@ -26,7 +26,7 @@ const Image = ({urlImage, altImage, onImageUpload, onDeleteImage, onImageDownloa
             )}
             {urlImage !== null && (
                 <div className="row">
-                    <img alt={altImage} src={urlImage}/>
+                    <img className="img-fluid" alt={altImage} src={urlImage}/>
                     <i className="fa fa-trash m-2 clickable fa-2x"
                        onClick={() => onDeleteImage()}
                        aria-hidden="true"

@@ -16,7 +16,6 @@ const UserInformation = ({user, onInPlace}) => {
                 paramName="email"
                 change={(data) => onInPlace(data)}
                 style={{
-                    backgroundColor: '#D1D1D1',
                     minWidth: 150,
                     display: 'inline-block',
                     margin: 0,
