@@ -3,8 +3,11 @@ import Form from "./common/form";
 import Joi from "joi-browser";
 import * as userService from "../services/userService";
 import auth from "../services/authService";
+import LanguageContext from "../context/languageContext";
 
 class RegisterForm extends Form {
+    static contextType = LanguageContext;
+
     state = {
         data: {login: '', password: '', email: ''},
         errors: {}
@@ -39,18 +42,31 @@ class RegisterForm extends Form {
 
     render() {
         return (
-            <div style={{height: "100vh"}}
-                 className="d-flex justify-content-center align-items-center">
-                <div>
-                    <h1 className="text-center">Register</h1>
-                    <form onSubmit={this.handleSubmit}>
-                        {this.renderInput('login', 'Username', 'text')}
-                        {this.renderInput('password', 'Password', 'password')}
-                        {this.renderInput('email', 'Email', 'email')}
-                        {this.renderButton('Register')}
-                    </form>
-                </div>
-            </div>
+            <LanguageContext.Consumer>
+                {languageContext => (
+                    <div style={{height: "100vh"}}
+                         className="d-flex justify-content-center align-items-center">
+                        <div>
+                            <h1 className="text-center">{languageContext.language.registerForm.register}</h1>
+                            <form onSubmit={this.handleSubmit}>
+                                {this.renderInput(
+                                    'login',
+                                    languageContext.language.registerForm.username,
+                                    'text')}
+                                {this.renderInput(
+                                    'password',
+                                    languageContext.language.registerForm.password,
+                                    'password')}
+                                {this.renderInput(
+                                    'email',
+                                    languageContext.language.registerForm.email,
+                                    'email')}
+                                {this.renderButton(languageContext.language.registerForm.register)}
+                            </form>
+                        </div>
+                    </div>
+                )}
+            </LanguageContext.Consumer>
         );
     }
 }

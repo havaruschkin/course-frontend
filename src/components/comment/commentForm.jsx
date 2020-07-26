@@ -4,7 +4,7 @@ import CommentsBlock from 'simple-react-comments';
 import {getComments} from "../../services/commentService";
 import SockJS from "sockjs-client";
 import Stomp from "stomp-websocket";
-import { apiUrl } from "../../config";
+import {apiUrl} from "../../config";
 
 class CommentForm extends Form {
     state = {

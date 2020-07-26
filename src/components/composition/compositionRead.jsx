@@ -6,8 +6,12 @@ import ChapterRead from "../chapter/chapterRead";
 import {getRatingComposition} from "../../services/ratingService";
 import {deleteChapter} from "../../services/chapterService";
 import ChapterContents from "../chapterContents";
+import LanguageContext from "../../context/languageContext";
+import {NavLink} from "react-router-dom";
 
 class CompositionRead extends Component {
+    static contextType = LanguageContext;
+
     state = {
         data: {
             id: "",
@@ -37,11 +41,6 @@ class CompositionRead extends Component {
         /chapters/${chapterId}?key=${this.props.match.params.id}`;
     };
 
-    handleCreate = () => {
-        window.location = `/compositions/${this.props.match.params.id}
-        /chapters/new?key=${this.props.match.params.id}`;
-    };
-
     handleDelete = async chapterId => {
         const compositionId = this.props.match.params.id;
         await deleteChapter(chapterId);
@@ -54,48 +53,56 @@ class CompositionRead extends Component {
         const {user: currentUser} = this.props;
 
         return (
-            <React.Fragment>
-                <div className="text-lg-right">
-                    {currentUser && currentUser.sub === data.user.login && (
-                        <button className="btn btn-outline-primary"
-                                onClick={this.handleCreate}>
-                            <i className="fa fa-plus m-2" aria-hidden="true"/>Add chapter
-                        </button>
-                    )}
-                </div>
-                <h1 className="text-center">{data.compositionName}</h1>
-                <h6 className="text-center">{data.description}</h6>
-                <img style={{marginBottom: "30px"}}
-                     alt={data.altImage}
-                     src={data.urlImage}/>
-                <ChapterContents chapters={data.chapters}/>
-                <div className="jumbotron">
-                    <ChapterRead chapters={data.chapters}
-                                 currentUser={currentUser}
-                                 compositionUser={data.user}
-                                 onUpdate={this.handleUpdate}
-                                 onDelete={this.handleDelete}/>
-                    {currentUser && (
-                        <Rating compositionId={this.props.match.params.id}/>
-                    )}
-                    {!currentUser && (
-                        <div className="text-center">
-                            Rating composition:
-                            <p className="badge badge-primary m-2">
-                                {ratingComposition}
-                            </p>
+            <LanguageContext.Consumer>
+                {languageContext => (
+                    <React.Fragment>
+                        <h1 className="text-center">{data.compositionName}</h1>
+                        <h6 className="text-center">{data.description}</h6>
+                        <div className="text-center mb-4">
+                            <img className="img-fluid"
+                                 alt={data.altImage}
+                                 src={data.urlImage}/>
                         </div>
-                    )}
-                    <div className="text-lg-right">
-                        <small>Composition created: {data.createdAt}</small><br/>
-                        <small>Last updated: {data.updatedAt}</small><br/>
-                    </div>
-                </div>
-                {currentUser && (
-                    <CommentForm compositionId={this.props.match.params.id}
-                                 user={currentUser}/>
+                        <ChapterContents chapters={data.chapters}/>
+                        <div className="text-center mb-4">
+                            {currentUser && currentUser.sub === data.user.login && (
+                                <NavLink
+                                    to={`/compositions/${this.props.match.params.id}/chapters/new?key=${this.props.match.params.id}`}>
+                                    {languageContext.language.addChapter}
+                                </NavLink>
+                            )}
+                        </div>
+                        <div className="jumbotron">
+                            <div className="mb-5">
+                                <ChapterRead chapters={data.chapters}
+                                             currentUser={currentUser}
+                                             compositionUser={data.user}
+                                             onUpdate={this.handleUpdate}
+                                             onDelete={this.handleDelete}/>
+                                {currentUser && (
+                                    <Rating compositionId={this.props.match.params.id}/>
+                                )}
+                                {!currentUser && (
+                                    <div className="text-center">
+                                        {languageContext.language.rating.ratingComposition}
+                                        <p className="badge badge-primary m-2">
+                                            {ratingComposition}
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
+                            <div className="text-right">
+                                <small>{languageContext.language.created}{data.createdAt}</small><br/>
+                                <small>{languageContext.language.updated}{data.updatedAt}</small><br/>
+                            </div>
+                        </div>
+                        {currentUser && (
+                            <CommentForm compositionId={this.props.match.params.id}
+                                         user={currentUser}/>
+                        )}
+                    </React.Fragment>
                 )}
-            </React.Fragment>
+            </LanguageContext.Consumer>
         );
     }
 }

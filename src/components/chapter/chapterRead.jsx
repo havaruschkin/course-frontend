@@ -10,12 +10,13 @@ const ChapterRead = ({chapters, currentUser, compositionUser, onUpdate, onCreate
                 <div key={chapter.id}>
                     <div>
                         {currentUser && currentUser.sub === compositionUser.login && (
-                            <ActionBarChapter
-                                onUpdate={onUpdate}
-                                onCreate={onCreate}
-                                onDelete={onDelete}
-                                chapterId={chapter.id}
-                            />
+                            <div className="text-right">
+                                <ActionBarChapter
+                                    onUpdate={onUpdate}
+                                    onDelete={onDelete}
+                                    chapterId={chapter.id}
+                                />
+                            </div>
                         )}
                         <h3 className="text-center"
                             style={{marginBottom: "20px"}}>

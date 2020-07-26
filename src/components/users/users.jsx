@@ -78,13 +78,15 @@ class Users extends Component {
                         onUnlock={this.handleUnlock}
                         onDelete={this.handleDelete}
                     />
-                    <UsersTable
-                        users={users}
-                        selectedFlagValue={selectedFlagValue}
-                        onSelect={this.handleSelect}
-                        onSelectAll={this.handleSelectAll}
-                        onAdmin={this.handleAddAdmin}
-                    />
+                    <div className="table-responsive">
+                        <UsersTable
+                            users={users}
+                            selectedFlagValue={selectedFlagValue}
+                            onSelect={this.handleSelect}
+                            onSelectAll={this.handleSelectAll}
+                            onAdmin={this.handleAddAdmin}
+                        />
+                    </div>
                 </div>
             </div>
         );

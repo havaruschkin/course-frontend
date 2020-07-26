@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Table from "../common/table/table";
+import {NavLink} from "react-router-dom";
 
 class ChapterTable extends Component {
     columns = [
@@ -7,14 +8,11 @@ class ChapterTable extends Component {
         {
             key: "buttons",
             content: chapter => (
-                <div className="btn-group m-1">
-                    <button
-                        onClick={() => this.props.onUpdate(chapter)}
-                        className="btn btn-primary btn-sm"
-                    >
+                <NavLink to={`/compositions/${this.props.compositionId}/chapters/${chapter.id}`}>
+                    <button className="btn btn-primary btn-sm">
                         Update
                     </button>
-                </div>
+                </NavLink>
             )
         }
     ];

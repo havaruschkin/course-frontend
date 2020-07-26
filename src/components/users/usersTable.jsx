@@ -1,12 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import _ from 'lodash';
+import LanguageContext from "../../context/languageContext";
 
 const UsersTable = ({users, selectedFlagValue, onSelectAll, onSelect, onAdmin}) => {
+    let {language} = useContext(LanguageContext);
     const sortedUsers = _.orderBy(users, "id", "asc");
 
     return (
         <React.Fragment>
-            <table className="table">
+            <table style={{minWidth: "1000px"}}>
                 <thead>
                 <tr>
                     <th>
@@ -15,12 +17,12 @@ const UsersTable = ({users, selectedFlagValue, onSelectAll, onSelect, onAdmin}) 
                                onChange={e => onSelectAll(e.currentTarget.checked)}/>
                     </th>
                     <th>Id</th>
-                    <th>Login</th>
-                    <th>Email</th>
-                    <th>Status</th>
-                    <th>Created TS</th>
-                    <th>Authorities</th>
-                    <th>Control admin</th>
+                    <th>{language.userTable.login}</th>
+                    <th>{language.userTable.email}</th>
+                    <th>{language.userTable.status}</th>
+                    <th>{language.userTable.created}</th>
+                    <th>{language.userTable.authorities}</th>
+                    <th>{language.userTable.controlAdmin}</th>
                 </tr>
                 </thead>
                 <tbody>

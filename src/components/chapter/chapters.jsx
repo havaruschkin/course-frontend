@@ -1,18 +1,14 @@
 import React, {Component} from 'react';
 import ChapterTable from "./chapterTable";
+import LanguageContext from "../../context/languageContext";
+import {NavLink} from "react-router-dom";
 
 class Chapters extends Component {
+    static contextType = LanguageContext;
+
     state = {
         chapters: [],
         sortColumn: {path: 'title', order: 'asc'},
-    };
-
-    handleUpdate = chapters => {
-        window.location = `/compositions/${this.props.compositionId}/chapters/${chapters.id}`;
-    };
-
-    handleCreate = () => {
-        window.location = `/compositions/${this.props.compositionId}/chapters/new`;
     };
 
     handleSort = sortColumn => {
@@ -24,23 +20,26 @@ class Chapters extends Component {
         const {chapters} = this.props;
 
         return (
-            <div className="row">
-
-                <div className="col">
-                    <button
-                        onClick={this.handleCreate}
-                        className="btn btn-primary"
-                        style={{marginBottom: 20}}
-                    >
-                        Add Chapter
-                    </button>
-                    <ChapterTable
-                        chapters={chapters}
-                        onUpdate={this.handleUpdate}
-                        onSort={this.handleSort}
-                        sortColumn={sortColumn}/>
-                </div>
-            </div>
+            <LanguageContext.Consumer>
+                {languageContext => (
+                    <div className="row">
+                        <div className="col">
+                            <NavLink to={`/compositions/${this.props.compositionId}/chapters/new`}>
+                                <button className="btn btn-primary mb-3">
+                                    {languageContext.language.addChapter}
+                                </button>
+                            </NavLink>
+                            <div className="table-responsive">
+                                <ChapterTable
+                                    compositionId={this.props.compositionId}
+                                    chapters={chapters}
+                                    onSort={this.handleSort}
+                                    sortColumn={sortColumn}/>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </LanguageContext.Consumer>
         );
     }
 }

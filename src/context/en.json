@@ -1,0 +1,79 @@
+{
+  "en": {
+    "navBar": {
+      "home": "Home",
+      "myCompositions": "My compositions",
+      "adminPanel": "Admin panel",
+      "hello": "Hello",
+      "logout": "Logout",
+      "login": "Login",
+      "register": "Register",
+      "language": "Language",
+      "russian": "Russian",
+      "english": "English"
+    },
+    "genres": "Genres",
+    "tags": "Tags",
+    "compositions": {
+      "title": "Your compositions",
+      "createButton": "Create Composition",
+      "noCompositions": "There are no compositions",
+      "foundCompositions": "Found compositions"
+    },
+    "userInformation": {
+      "title": "User information",
+      "login": "Login",
+      "email": "Email",
+      "created": "Created",
+      "status": "Status"
+    },
+    "loginForm": {
+      "login": "Login",
+      "username": "Username",
+      "password": "Password"
+    },
+    "registerForm": {
+      "register": "Register",
+      "username": "Username",
+      "password": "Password",
+      "email": "Email"
+    },
+    "userTable": {
+      "login": "Login",
+      "email": "Email",
+      "status": "Status",
+      "created": "Created",
+      "authorities": "Authorities",
+      "controlAdmin": "Control admin"
+    },
+    "rating": {
+      "title": "Rate the composition",
+      "ratingComposition": "Rating composition:",
+      "yourRating": "Your rating of "
+    },
+    "created": "Created: ",
+    "updated": "Last updated: ",
+    "chapterContent": "Table of contents:",
+    "addChapter": "Add chapter",
+    "compositionForm": {
+      "titleNew": "Create composition",
+      "titleUpdate": "Update composition",
+      "title": "Title",
+      "description": "Description",
+      "genre": "Genre",
+      "save": "Save",
+      "tags": "Tags"
+    },
+    "image": {
+      "drop": "Drag the image here or click to download!",
+      "download": "Download"
+    },
+    "chapterForm": {
+      "titleNew": "Create chapter",
+      "titleUpdate": "Update chapter",
+      "title": "Title",
+      "save": "Save",
+      "delete": "Delete"
+    }
+  }
+}

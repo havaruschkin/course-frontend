@@ -46,10 +46,6 @@ class HomePage extends Component {
             : this.setState({selectedTag: tag});
     };
 
-    handleRead = id => {
-        window.location = `/compositionRead/${id}`;
-    };
-
     render() {
 
         const {compositions, selectedGenre, selectedTag, genres, tags, sortColumn} = this.state;
@@ -63,24 +59,23 @@ class HomePage extends Component {
 
         return (
             <div className="row">
-                <div className="col-3">
-                    <ListGroup
-                        items={genres}
-                        selectedItem={selectedGenre}
-                        onItemSelect={this.handleGenreSelect}
-                        textProperty={"genreName"}
-                        valueProperty={"id"}/>
+                <div className="col-md col-lg-4 mb-5">
+                    <div className="mb-3">
+                        <ListGroup
+                            items={genres}
+                            selectedItem={selectedGenre}
+                            onItemSelect={this.handleGenreSelect}
+                            textProperty={"genreName"}
+                            valueProperty={"id"}/>
+                    </div>
+                    <div className="mb-3">
+                        <TagsCloud tags={tags}
+                                   onItemSelect={this.handleTagSelect}
+                                   selectedTag={selectedTag}/>
+                    </div>
                 </div>
-                <div className="col">
-                    <CompositionCard
-                        sortedCompositions={sortedCompositions}
-                        onClick={this.handleRead}
-                    />
-                </div>
-                <div className="col-3">
-                    <TagsCloud tags={tags}
-                               onItemSelect={this.handleTagSelect}
-                               selectedTag={selectedTag}/>
+                <div className="col-lg col-md  mb-2 row-fluid">
+                    <CompositionCard sortedCompositions={sortedCompositions}/>
                 </div>
             </div>
         );

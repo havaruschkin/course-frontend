@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import InlineEdit from 'react-edit-inplace';
+import LanguageContext from "../../context/languageContext";
 
 const UserInformation = ({user, onInPlace}) => {
-    console.log(user)
+    let {language} = useContext(LanguageContext);
     if (user.email === undefined) return null;
+
     return (
         <div>
-            <h2 className="text-lg-center" style={{marginBottom: "20px"}}>User information</h2>
-            <span>Login: </span>{user.login}<br/>
-            <span>Email: </span>
+            <h2 className="text-center mb-4">{language.userInformation.title}</h2>
+            <span>{language.userInformation.login}: </span>{user.login}<br/>
+            <span>{language.userInformation.email}: </span>
             <InlineEdit
                 text={user.email}
                 paramName="email"
@@ -23,8 +25,8 @@ const UserInformation = ({user, onInPlace}) => {
                     outline: 0,
                     border: 0
                 }}/><br/>
-            <span>Created: </span>{user.createdTs}<br/>
-            <span>Status: </span>{user.status}<br/>
+            <span>{language.userInformation.created}: </span>{user.createdTs}<br/>
+            <span>{language.userInformation.status}: </span>{user.status}<br/>
         </div>
     );
 };

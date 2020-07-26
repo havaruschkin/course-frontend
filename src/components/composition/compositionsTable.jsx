@@ -10,7 +10,7 @@ class CompositionsTable extends Component {
             label: 'Title',
             content: composition => (
                 <Link to={`/compositionRead/${composition.id}`}
-                title="To read">
+                      title="To read">
                     {composition.compositionName}
                 </Link>)
         },
@@ -45,12 +45,14 @@ class CompositionsTable extends Component {
         const {compositions, sortColumn, onSort} = this.props;
 
         return (
-            <Table
-                columns={this.columns}
-                data={compositions}
-                sortColumn={sortColumn}
-                onSort={onSort}
-            />
+            <div className="table-responsive">
+                <Table
+                    columns={this.columns}
+                    data={compositions}
+                    sortColumn={sortColumn}
+                    onSort={onSort}
+                />
+            </div>
         );
     }
 }

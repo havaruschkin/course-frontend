@@ -10,6 +10,7 @@ import {getGenres} from "../../services/genreService";
 import {deleteComposition, getCompositionsUser} from "../../services/compositionService";
 import UserInformation from "../users/userInrormation";
 import {getUser, updateUser} from "../../services/userApiService";
+import LanguageContext from "../../context/languageContext";
 
 class Compositions extends Component {
     state = {
@@ -18,7 +19,6 @@ class Compositions extends Component {
         pageSize: 10,
         currentPage: 1,
         sortColumn: {path: 'updatedAt', order: 'desc'},
-        message: 'ReactInline demo',
         user: {}
     };
 
@@ -100,7 +100,7 @@ class Compositions extends Component {
 
         return (
             <div className="row">
-                <div className="col-4">
+                <div className="col-lg-4 col-md mb-5">
                     <ListGroup
                         items={genres}
                         selectedItem={selectedGenre}
@@ -110,18 +110,31 @@ class Compositions extends Component {
                         user={user}
                         onInPlace={this.dataChanged}/>
                 </div>
-                <div className="col">
-                    <h1 className="text-center">Your compositions</h1>
-                    <Link
-                        to="/compositions/new"
-                        className="btn btn-outline-primary"
-                        style={{marginBottom: 20}}
-                    >
-                        New Composition
-                    </Link>
-                    {count === 0 ?
-                        <p>There are no compositions</p> :
-                        <p>Found {filtered.length} compositions.</p>}
+                <div className="col-lg col-md">
+                    <LanguageContext.Consumer>
+                        {languageContext => (
+                            <div>
+                                <h1 className="text-center mb-4">{languageContext.language.compositions.title}</h1>
+                                <div className="text-right">
+                                    <Link
+                                        to="/compositions/new"
+                                        className="btn btn-outline-primary"
+                                        style={{marginBottom: 20}}
+                                    >
+                                        {languageContext.language.compositions.createButton}
+                                    </Link>
+                                </div>
+                                {count === 0 ?
+                                    <p className="text-center">
+                                        {languageContext.language.compositions.noCompositions}
+                                    </p> :
+                                    <p className="text-center">
+                                        {languageContext.language.compositions.foundCompositions}:
+                                        {filtered.length}
+                                    </p>}
+                            </div>
+                        )}
+                    </LanguageContext.Consumer>
                     <CompositionsTable
                         compositions={compositions}
                         sortColumn={sortColumn}

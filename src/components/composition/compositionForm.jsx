@@ -7,8 +7,11 @@ import Chapters from "../chapter/chapters";
 import ReactTags from 'react-tag-autocomplete'
 import {getAllTags} from "../../services/tagService";
 import Image from "../common/image";
+import LanguageContext from "../../context/languageContext";
 
 class CompositionForm extends Form {
+    static contextType = LanguageContext;
+
     state = {
         data: {
             compositionName: "",
@@ -52,7 +55,7 @@ class CompositionForm extends Form {
         try {
             const compositionId = this.props.match.params.id;
             if (compositionId === "new") {
-            this.setState({urlImage: null});
+                this.setState({urlImage: null});
                 return
             }
             const {data: composition} = await getComposition(compositionId);
@@ -135,6 +138,11 @@ class CompositionForm extends Form {
             .catch(err => console.log(err));
     };
 
+    handelImageDownload = e => {
+        const files = e.target.files;
+        this.handleImageUpload(files);
+    };
+
     handleDeleteImage = () => {
         this.setState({
             urlImage: null,
@@ -143,43 +151,60 @@ class CompositionForm extends Form {
     };
 
     render() {
+        let context = this.context;
         const {genres, chapters, tags, suggestions, urlImage, altImage} = this.state;
         const compositionId = this.props.match.params.id;
         const titlePage = (compositionId === "new" ?
-            "Create composition" : "Update composition");
+            context.language.compositionForm.titleNew :
+            context.language.compositionForm.titleUpdate);
 
         return (
-            <div>
-                <h1 className="text-center" style={{marginBottom: "50px"}}>{titlePage}</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <Image
-                        urlImage={urlImage}
-                        altImage={altImage}
-                        onImageUpload={this.handleImageUpload}
-                        onDeleteImage={this.handleDeleteImage}
-                    />
-                    {this.renderInput('compositionName', 'Title', 'text')}
-                    {this.renderInput('description', 'Description', 'text')}
-                    {this.renderSelect('genreId', 'Genre', genres)}
-                    {compositionId !== "new" && (
-                        <Chapters
-                            chapters={chapters}
-                            compositionId={compositionId}
-                        />
-                    )}
+            <LanguageContext.Consumer>
+                {languageContext => (
                     <div>
-                        <label>Add tags:</label>
-                        <ReactTags
-                            tags={tags}
-                            suggestions={suggestions}
-                            onDelete={this.onDelete}
-                            onAddition={this.onAddition}
-                            allowNew={true}
-                        />
+                        <h1 className="text-center" style={{marginBottom: "50px"}}>{titlePage}</h1>
+                        <form onSubmit={this.handleSubmit}>
+                            <Image
+                                urlImage={urlImage}
+                                altImage={altImage}
+                                onImageDownload={this.handelImageDownload}
+                                onImageUpload={this.handleImageUpload}
+                                onDeleteImage={this.handleDeleteImage}
+                            />
+                            {this.renderInput(
+                                'compositionName',
+                                languageContext.language.compositionForm.title,
+                                'text')}
+                            {this.renderInput(
+                                'description',
+                                languageContext.language.compositionForm.description,
+                                'text')}
+                            {this.renderSelect(
+                                'genreId',
+                                languageContext.language.compositionForm.genre,
+                                genres)}
+                            {compositionId !== "new" && (
+                                <Chapters
+                                    chapters={chapters}
+                                    compositionId={compositionId}
+                                />
+                            )}
+                            <div>
+                                <label>{languageContext.language.compositionForm.tags}</label>
+                                <ReactTags
+                                    tags={tags}
+                                    suggestions={suggestions}
+                                    onDelete={this.onDelete}
+                                    onAddition={this.onAddition}
+                                    allowNew={true}
+                                    placeholderText=""
+                                />
+                            </div>
+                            {this.renderButton(languageContext.language.compositionForm.save)}
+                        </form>
                     </div>
-                    {this.renderButton('Save')}
-                </form>
-            </div>
+                )}
+            </LanguageContext.Consumer>
         );
     }
 }

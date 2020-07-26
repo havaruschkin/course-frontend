@@ -1,0 +1,79 @@
+{
+  "ru": {
+    "navBar": {
+      "home": "Домашняя страница",
+      "myCompositions": "Мои композиции",
+      "adminPanel": "Панель администратора",
+      "hello": "Привет",
+      "logout": "Выход",
+      "login": "Вход",
+      "register": "Регистрация",
+      "language": "Язык",
+      "russian": "Русский",
+      "english": "Английский"
+    },
+    "genres": "Жанры",
+    "tags": "Тэги",
+    "compositions": {
+      "title": "Ваши произведения",
+      "createButton": "Создать произведение",
+      "noCompositions": "У вас пока нет произведение!",
+      "foundCompositions": "Найдено произведений"
+    },
+    "userInformation": {
+      "title": "Информация о пользователе",
+      "login": "Имя",
+      "email": "Почта",
+      "created": "Создан",
+      "status": "Статус"
+    },
+    "loginForm": {
+      "login": "Вход",
+      "username": "Логин",
+      "password": "Пароль"
+    },
+    "registerForm": {
+      "register": "Регистрация",
+      "username": "Логин",
+      "password": "Пароль",
+      "email": "Почта"
+    },
+    "userTable": {
+      "login": "Имя",
+      "email": "Почта",
+      "status": "Статус",
+      "created": "Создан",
+      "authorities": "Доступ",
+      "controlAdmin": "Упровление доступом"
+    },
+    "rating": {
+      "title": "Оцените произведение",
+      "ratingComposition": "Райтинг произведения:",
+      "yourRating": "Ваша оценка "
+    },
+    "created": "Создан: ",
+    "updated": "Последнее обновление: ",
+    "chapterContent": "Оглавление:",
+    "addChapter": "Создать главу",
+    "compositionForm": {
+      "titleNew": "Создание произведения",
+      "titleUpdate": "Обновление произведения",
+      "title": "Название",
+      "description": "Описание",
+      "genre": "Жанр",
+      "save": "Сохранить",
+      "tags": "Тэги"
+    },
+    "image": {
+      "drop": "Перетащите изображение сюда или нажмите для загрузки!",
+      "download": "Загрузить"
+    },
+    "chapterForm": {
+      "titleNew": "Создание главы",
+      "titleUpdate": "Обновление главы",
+      "title": "Название",
+      "save": "Сохранить",
+      "delete": "Удалить"
+    }
+  }
+}

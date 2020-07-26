@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext} from "react";
+import LanguageContext from "../../context/languageContext";
 
 const ListGroup = ({
                        items,
@@ -7,10 +8,12 @@ const ListGroup = ({
                        onItemSelect,
                        selectedItem
                    }) => {
+    let {language} = useContext(LanguageContext);
+
     return (
         <div style={{marginBottom: "40px"}}>
-            <h2 style={{marginBottom: "40px"}} className="text-lg-center">
-                Genres
+            <h2 style={{marginBottom: "40px"}} className="text-center">
+                {language.genres}
             </h2>
             <ul className="list-group">
                 {items.map(item => (
