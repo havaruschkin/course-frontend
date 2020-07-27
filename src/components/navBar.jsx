@@ -3,7 +3,6 @@ import {Link, NavLink} from "react-router-dom";
 import LanguageContext from "../context/languageContext";
 import {Nav, Navbar, NavDropdown} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Search from "./search";
 
 const NavBar = ({user, onLanguage, onTheme}) => {
     let {language} = useContext(LanguageContext);
@@ -27,36 +26,31 @@ const NavBar = ({user, onLanguage, onTheme}) => {
                             {language.navBar.adminPanel}
                         </NavLink>
                     )}
-                    {user && (
-                        <NavDropdown title={language.navBar.language} id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#1">
-                                <span onClick={() => onLanguage("ru")}>{language.navBar.russian}</span>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">
-                                <span onClick={() => onLanguage("en")}>{language.navBar.english}</span>
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                    )}
-                    {user && (
-                        <NavDropdown title={language.navBar.themes} id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#2">
-                                <span onClick={() => onTheme("dark")}>{language.navBar.dark}</span>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">
-                                <span onClick={() => onTheme("light")}>{language.navBar.light}</span>
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                    )}
+                    <NavDropdown title={language.navBar.language} id="collasible-nav-dropdown">
+                        <NavDropdown.Item href="#1">
+                            <span onClick={() => onLanguage("ru")}>{language.navBar.russian}</span>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.2">
+                            <span onClick={() => onLanguage("en")}>{language.navBar.english}</span>
+                        </NavDropdown.Item>
+                    </NavDropdown>
+                    <NavDropdown title={language.navBar.themes} id="collasible-nav-dropdown">
+                        <NavDropdown.Item href="#2">
+                            <span onClick={() => onTheme("dark")}>{language.navBar.dark}</span>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.2">
+                            <span onClick={() => onTheme("light")}>{language.navBar.light}</span>
+                        </NavDropdown.Item>
+                    </NavDropdown>
                 </Nav>
-                <Search/>
                 <Nav>
                     <div className="form-inline">
                         {!user && (
                             <React.Fragment>
-                                <NavLink className="nav-item nav-link" to="/login" style={{color: "white"}}>
+                                <NavLink className="nav-item nav-link" to="/login">
                                     {language.navBar.login}
                                 </NavLink>
-                                <NavLink className="nav-item nav-link" to="/register" style={{color: "white"}}>
+                                <NavLink className="nav-item nav-link" to="/register">
                                     {language.navBar.register}
                                 </NavLink>
                             </React.Fragment>

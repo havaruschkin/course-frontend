@@ -24,7 +24,6 @@ import {ru} from "./context/ru";
 import {getUser, updateUser} from "./services/userApiService";
 import {ThemeProvider} from "styled-components";
 import GlobalStyle from "./components/globalStyle";
-import SearchPage from "./components/searchPage";
 
 class App extends Component {
     state = {language: en, theme: "light", currentUser: "", user: ""};
@@ -104,7 +103,6 @@ class App extends Component {
                                     render={props =>
                                         <Compositions {...props} user={user}/>}
                                 />
-                                <Route path="/search" component={SearchPage}/>
                                 <Route path="/info" component={InfoRage}/>
                                 <Route path="/activate" component={RegisterPage}/>
                                 <Route path="/logout" component={Logout}/>
