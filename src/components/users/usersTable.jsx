@@ -8,7 +8,7 @@ const UsersTable = ({users, selectedFlagValue, onSelectAll, onSelect, onAdmin}) 
 
     return (
         <React.Fragment>
-            <table className="table-bordered table">
+            <table className="table table-borderless my-table">
                 <thead>
                 <tr>
                     <th>

@@ -21,7 +21,7 @@
       "title": "Ваши произведения",
       "createButton": "Создать произведение",
       "noCompositions": "У вас пока нет произведение!",
-      "foundCompositions": "Найдено произведений"
+      "foundCompositions": "Найдено произведений: "
     },
     "userInformation": {
       "title": "Информация о пользователе",

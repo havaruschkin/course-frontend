@@ -21,7 +21,7 @@
       "title": "Your compositions",
       "createButton": "Create Composition",
       "noCompositions": "There are no compositions",
-      "foundCompositions": "Found compositions"
+      "foundCompositions": "Found compositions: "
     },
     "userInformation": {
       "title": "User information",

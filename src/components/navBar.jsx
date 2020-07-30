@@ -47,7 +47,7 @@ const NavBar = ({user, onLanguage, onTheme}) => {
                     <div className="form-inline">
                         {!user && (
                             <React.Fragment>
-                                <NavLink className="nav-item nav-link" to="/login">
+                                <NavLink className="nav-item nav-link m-2" to="/login">
                                     {language.navBar.login}
                                 </NavLink>
                                 <NavLink className="nav-item nav-link" to="/register">
@@ -57,7 +57,10 @@ const NavBar = ({user, onLanguage, onTheme}) => {
                         )}
                         {user && (
                             <React.Fragment>
-                                <div style={{color: "white"}}>{language.navBar.hello}: {user.sub}</div>
+                                <div style={{color: "white"}}
+                                className="m-2">
+                                    {language.navBar.hello}: {user.sub}
+                                </div>
                                 <NavLink className="nav-item nav-link" to="/logout" style={{color: "red"}}>
                                     {language.navBar.logout}
                                 </NavLink>

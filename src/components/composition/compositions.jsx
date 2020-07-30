@@ -125,7 +125,7 @@ class Compositions extends Component {
                                         {languageContext.language.compositions.noCompositions}
                                     </p> :
                                     <p className="text-center">
-                                        {languageContext.language.compositions.foundCompositions}:
+                                        {languageContext.language.compositions.foundCompositions}
                                         {filtered.length}
                                     </p>}
                             </div>

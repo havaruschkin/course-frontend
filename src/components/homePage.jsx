@@ -59,7 +59,7 @@ class HomePage extends Component {
 
         return (
             <div className="row">
-                <div className="col-md col-lg-4 mb-5">
+                <div className="col-md col-lg-3 mb-5">
                     <div className="mb-3">
                         <ListGroup
                             items={genres}
@@ -74,7 +74,7 @@ class HomePage extends Component {
                                    selectedTag={selectedTag}/>
                     </div>
                 </div>
-                <div className="col-lg col-md  mb-2 row-fluid">
+                <div className="col col-md  mb-2">
                     <CompositionCard sortedCompositions={sortedCompositions}/>
                 </div>
             </div>
