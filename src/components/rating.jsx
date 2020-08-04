@@ -57,7 +57,8 @@ class Rating extends Component {
                                         {userRating}
                                     </p>
                                 </div>
-                            </div>}
+                            </div>
+                        }
                     </div>
                 )}
             </LanguageContext.Consumer>

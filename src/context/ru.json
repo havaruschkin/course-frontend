@@ -78,6 +78,8 @@
       "save": "Сохранить",
       "delete": "Удалить"
     },
-    "searchTitle": "Найденные произведения"
+    "searchTitle": "Найденные произведения",
+    "carouselTitle": "Топ 3",
+    "cardsTitle": "Новые"
   }
 }

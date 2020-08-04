@@ -27,18 +27,18 @@ const NavBar = ({user, onLanguage, onTheme}) => {
                         </NavLink>
                     )}
                     <NavDropdown title={language.navBar.language} id="collasible-nav-dropdown">
-                        <NavDropdown.Item href="#1">
+                        <NavDropdown.Item href="#ru">
                             <span onClick={() => onLanguage("ru")}>{language.navBar.russian}</span>
                         </NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">
+                        <NavDropdown.Item href="#en">
                             <span onClick={() => onLanguage("en")}>{language.navBar.english}</span>
                         </NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown title={language.navBar.themes} id="collasible-nav-dropdown">
-                        <NavDropdown.Item href="#2">
+                        <NavDropdown.Item href="#darck">
                             <span onClick={() => onTheme("dark")}>{language.navBar.dark}</span>
                         </NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">
+                        <NavDropdown.Item href="#light">
                             <span onClick={() => onTheme("light")}>{language.navBar.light}</span>
                         </NavDropdown.Item>
                     </NavDropdown>

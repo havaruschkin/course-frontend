@@ -78,6 +78,8 @@
       "save": "Save",
       "delete": "Delete"
     },
-    "searchTitle": "Found compositions"
+    "searchTitle": "Found compositions",
+    "carouselTitle": "Top 3",
+    "cardsTitle": "New"
   }
 }

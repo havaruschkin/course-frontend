@@ -6,6 +6,7 @@ import ListGroup from "./common/listGroup";
 import {getAllTags} from "../services/tagService";
 import _ from "lodash";
 import TagsCloud from "./common/tagsCloud";
+import CarouselCompositions from "./carousel";
 
 class HomePage extends Component {
     state = {
@@ -28,8 +29,8 @@ class HomePage extends Component {
     }
 
     async initCompositions() {
-            const {data: compositions} = await getCompositions();
-            this.setState({compositions});
+        const {data: compositions} = await getCompositions();
+        this.setState({compositions});
     }
 
     async initTags() {
@@ -56,27 +57,26 @@ class HomePage extends Component {
             ? filteredCompositionsByGenre.filter(c => c.tags.map(tag => tag.id).includes(selectedTag.id))
             : filteredCompositionsByGenre;
         const sortedCompositions = _.orderBy(filteredCompositionsByTag, [sortColumn.path], [sortColumn.order]);
+        const sortedCompositionsByRating = _.orderBy(compositions, "rating", "desc");
 
         return (
-            <div className="row">
-                <div className="col-md col-lg-3 mb-5">
-                    <div className="mb-3">
-                        <ListGroup
-                            items={genres}
-                            selectedItem={selectedGenre}
-                            onItemSelect={this.handleGenreSelect}
-                            textProperty={"genreName"}
-                            valueProperty={"id"}/>
+            <div>
+                <div className="row">
+                    <div className="col-md col-lg-4 mb-5">
+                        <div className="mb-3">
+                            <ListGroup items={genres}
+                                       selectedItem={selectedGenre}
+                                       onItemSelect={this.handleGenreSelect}/>
+                        </div>
+                        <div className="mb-3">
+                            <TagsCloud tags={tags}
+                                       onItemSelect={this.handleTagSelect}
+                                       selectedTag={selectedTag}/>
+                        </div>
                     </div>
-                    <div className="mb-3">
-                        <TagsCloud tags={tags}
-                                   onItemSelect={this.handleTagSelect}
-                                   selectedTag={selectedTag}/>
-                    </div>
+                    <CarouselCompositions compositionsTop={sortedCompositionsByRating.slice(0, 3)}/>
                 </div>
-                <div className="col col-md  mb-2">
-                    <CompositionCard sortedCompositions={sortedCompositions}/>
-                </div>
+                <CompositionCard sortedCompositions={sortedCompositions}/>
             </div>
         );
     }

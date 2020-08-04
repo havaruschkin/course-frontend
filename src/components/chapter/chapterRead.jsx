@@ -3,10 +3,9 @@ import ReactMarkdown from "react-markdown";
 import CounterLike from "./counterLike";
 import ActionBarChapter from "../common/actionBarChapter";
 
-const ChapterRead = ({chapters, currentUser, compositionUser, compositionId, onDelete}) => {
+const ChapterRead = ({chapter, currentUser, compositionUser, compositionId, onDelete}) => {
     return (
         <div>
-            {chapters.map((chapter) => (
                 <div key={chapter.id}>
                     <div>
                         {currentUser && currentUser.sub === compositionUser.login && (
@@ -27,9 +26,7 @@ const ChapterRead = ({chapters, currentUser, compositionUser, compositionId, onD
                     {currentUser && (
                         <CounterLike chapter={chapter}/>
                     )}
-                    <hr/>
                 </div>
-            ))}
         </div>
     );
 };
