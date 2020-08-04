@@ -13,7 +13,7 @@ class HomePage extends Component {
         compositions: [],
         genres: [],
         tags: [],
-        sortColumn: {path: 'updatedAt', order: 'desc'}
+        sortColumn: {path: 'rating', order: 'desc'}
     };
 
     async componentDidMount() {
@@ -56,8 +56,10 @@ class HomePage extends Component {
         const filteredCompositionsByTag = selectedTag && selectedTag.id
             ? filteredCompositionsByGenre.filter(c => c.tags.map(tag => tag.id).includes(selectedTag.id))
             : filteredCompositionsByGenre;
-        const sortedCompositions = _.orderBy(filteredCompositionsByTag, [sortColumn.path], [sortColumn.order]);
-        const sortedCompositionsByRating = _.orderBy(compositions, "rating", "desc");
+        const sortedCompositions = _.orderBy(filteredCompositionsByTag, function (object) {
+            return new Date(object.updatedAt)
+        }, "desc");
+        const sortedCompositionsByRating = _.orderBy(compositions, [sortColumn.path], [sortColumn.order]);
 
         return (
             <div>
